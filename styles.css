@@ -1,0 +1,129 @@
+/* styles.css */
+body {
+  margin: 0;
+  font-family: 'Poppins', sans-serif;
+  background: #fff;
+  color: #333;
+  overflow-x: hidden;
+}
+
+/* Hero Index (gris oscuro con filtro) */
+.hero {
+  position: relative;
+  height: 100vh;
+  overflow: hidden;
+}
+.hero-img {
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  object-fit: cover;
+  /* Ajustamos el punto focal un poco más arriba para que la cara quede visible */
+  object-position: center 15%;
+  /* Menos contraste para mostrar mejor rasgos faciales */
+  filter: grayscale(100%) brightness(85%);
+}
+.hero-top {
+  position: absolute;
+  top: 20px; left: 30px;
+  color: #fff;
+}
+.hero-top h1 { font-size: 2.2rem; margin-bottom: 5px; }
+.hero-top p { font-size: 1rem; opacity: 0.8; }
+.hero-center {
+  position: absolute;
+  top: 50%; left: 50%;
+  transform: translate(-50%,-50%);
+  text-align: center;
+}
+.model-btn {
+  display: inline-block;
+  color: #fff;
+  text-decoration: none;
+}
+.box-line { display: block; width: 120px; height: 3px; background: #fff; margin: 0 auto; transition: width 0.3s; }
+.box-line.top { margin-bottom: 12px; }
+.box-line.bottom { margin-top: 12px; }
+.model-btn:hover .box-line { width: 150px; }
+
+/* Header común para modeling / about */
+.model-header {
+  position: fixed; top: 0; left: 0; right: 0;
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 16px 32px; background: #fff;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+  z-index: 10;
+}
+.model-header .logo {
+  color: #333; text-decoration: none;
+  font-size: 1.5rem; font-weight: 600;
+}
+.social-nav a {
+  margin-left: 16px; color: #333;
+  text-decoration: none;
+}
+.social-icon { width: 20px; vertical-align: middle; }
+
+/* Modeling Gallery */
+.model-gallery {
+  max-width: 1200px;
+  margin: 100px auto 40px;
+  padding: 0 20px;
+  display: grid;
+  grid-template-columns: repeat(2,1fr);
+  gap: 20px;
+}
+.thumb { position: relative; overflow: hidden; border-radius: 8px; }
+.thumb img {
+  width: 100%; height: 100%; object-fit: cover; transition: transform .3s;
+}
+.thumb:hover img { transform: scale(1.05); }
+.overlay { position: absolute; inset: 0;
+  display: flex; align-items: center; justify-content: center;
+  background: rgba(255,255,255,0); transition: background .3s;
+}
+.overlay h3 {
+  margin: 0; padding: 8px 12px;
+  font-size: 1.2rem; color: #333;
+  background: rgba(255,255,255,0.9); opacity: 0; transition: opacity .3s;
+}
+.thumb:hover .overlay { background: rgba(255,255,255,0.4); }
+.thumb:hover .overlay h3 { opacity: 1; }
+
+/* About Section: dos columnas sin recuadros literales */
+.about-section {
+  display: flex; align-items: center;
+  max-width: 1000px; margin: 100px auto;
+  padding: 0 20px;
+}
+.about-img {
+  flex: 1; overflow: hidden; border-radius: 8px;
+}
+.about-img img {
+  width: 100%; height: auto;
+  filter: grayscale(100%) brightness(60%);
+  object-fit: cover;
+}
+.about-text {
+  flex: 0 0 40%; margin-left: 40px;
+  padding: 24px;
+  background: #fff;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+  border-radius: 8px;
+}
+.about-text h2 {
+  margin-top: 0; font-size: 2rem;
+  color: #333; text-transform: uppercase;
+  letter-spacing: 1px;
+}
+.about-text p {
+  line-height: 1.6; color: #555;
+  margin-bottom: 16px;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .model-gallery { grid-template-columns: 1fr; margin-top: 80px; }
+  .about-section { flex-direction: column; margin-top: 80px; }
+  .about-text { margin-left: 0; margin-top: 20px; width: 100%; }
+}
